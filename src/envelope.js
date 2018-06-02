@@ -31,12 +31,12 @@ angular.module("envelope")
 		defaultOptions.baseUrl = null;
 	};
 
-	self.getAuthorization = function() {
-		return defaultOptions.authorization;
-	};
-
 	self.hasAuthorization = function() {
 		return utilities.isNonEmptyString(defaultOptions.authorization);
+	};
+
+	self.getAuthorization = function() {
+		return defaultOptions.authorization;
 	};
 
 	self.setAuthorizationToken = function(token) {
