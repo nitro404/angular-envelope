@@ -99,7 +99,7 @@ angular.module("envelope")
 		}
 
 		if(utilities.isEmptyString(method)) {
-			return callback(new Error("Missing or invalid method type: \"" + method + "\"."));
+			return callback(new Error("Missing or invalid method type."));
 		}
 
 		var formattedMethod = method.toUpperCase().trim();
