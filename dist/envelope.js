@@ -20,6 +20,10 @@
 				timeout: 30000
 			};
 
+			self.hasBaseUrl = function() {
+				return utilities.isNonEmptyString(defaultOptions.baseUrl);
+			};
+
 			self.getBaseUrl = function() {
 				return defaultOptions.baseUrl;
 			};
@@ -36,12 +40,12 @@
 				defaultOptions.baseUrl = null;
 			};
 
-			self.getAuthorization = function() {
-				return defaultOptions.authorization;
-			};
-
 			self.hasAuthorization = function() {
 				return utilities.isNonEmptyString(defaultOptions.authorization);
+			};
+
+			self.getAuthorization = function() {
+				return defaultOptions.authorization;
 			};
 
 			self.setAuthorizationToken = function(token) {
@@ -69,11 +73,6 @@
 			};
 
 			self.setTimeout = function(timeout) {
-				if(timeout === null) {
-					defaultOptions.timeout = null;
-					return;
-				}
-
 				var formattedTimeout = utilities.parseInteger(timeout);
 
 				if(utilities.isInvalidNumber(formattedTimeout) || formattedTimeout < 1) {
@@ -81,6 +80,10 @@
 				}
 
 				defaultOptions.timeout = formattedTimeout;
+			};
+
+			self.clearTimeout = function() {
+				defaultOptions.timeout = null;
 			};
 
 			self.request = function(method, path, data, query, options, callback) {
@@ -105,7 +108,7 @@
 				}
 
 				if(utilities.isEmptyString(method)) {
-					return callback(new Error("Missing or invalid method type: \"" + method + "\"."));
+					return callback(new Error("Missing or invalid method type."));
 				}
 
 				var formattedMethod = method.toUpperCase().trim();
