@@ -11,6 +11,10 @@ angular.module("envelope")
 		timeout: 30000
 	};
 
+	self.hasBaseUrl = function() {
+		return utilities.isNonEmptyString(defaultOptions.baseUrl);
+	};
+
 	self.getBaseUrl = function() {
 		return defaultOptions.baseUrl;
 	};
