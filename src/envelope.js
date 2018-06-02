@@ -73,6 +73,10 @@ angular.module("envelope")
 		defaultOptions.timeout = formattedTimeout;
 	};
 
+	self.clearTimeout = function() {
+		defaultOptions.timeout = null;
+	};
+
 	self.request = function(method, path, data, query, options, callback) {
 		if(utilities.isFunction(data)) {
 			callback = data;
