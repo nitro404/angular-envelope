@@ -3,7 +3,7 @@ angular.module("envelope")
 .service("Envelope", function($http) {
 	var self = this;
 
-	var validMethods = ["HEAD", "GET", "POST", "PUT", "PATCH", "DELETE"]
+	var validMethods = ["HEAD", "GET", "POST", "PUT", "PATCH", "DELETE"];
 
 	var defaultOptions = {
 		baseUrl: null,
@@ -111,7 +111,7 @@ angular.module("envelope")
 
 		var validMethod = false;
 
-		for(var i=0;i<validMethods.length;i++) {
+		for(var i = 0; i < validMethods.length; i++) {
 			if(formattedMethod === validMethods[i]) {
 				validMethod = true;
 				break;
@@ -170,29 +170,29 @@ angular.module("envelope")
 			newOptions.headers["Content-Type"] = "application/json";
 		}
 
-		if(utilities.isEmptyString(newOptions.headers["Accepts"])) {
-			newOptions.headers["Accepts"] = "application/json";
+		if(utilities.isEmptyString(newOptions.headers.Accepts)) {
+			newOptions.headers.Accepts = "application/json";
 		}
 
 		if(utilities.isValid(newOptions.authorization)) {
 			if(utilities.isNonEmptyString(newOptions.authorization)) {
-				if(utilities.isNonEmptyString(newOptions.headers["Authorization"])) {
+				if(utilities.isNonEmptyString(newOptions.headers.Authorization)) {
 					console.error("Authorization specified in header data is being overridden by authorization at root level of options.");
 				}
 
-				newOptions.headers["Authorization"] = newOptions.authorization;
+				newOptions.headers.Authorization = newOptions.authorization;
 			}
 
 			delete newOptions.authorization;
 		}
 
-		if(utilities.isEmptyString(newOptions.headers["Authorization"])) {
+		if(utilities.isEmptyString(newOptions.headers.Authorization)) {
 			if(utilities.isNonEmptyString(defaultOptions.authorization)) {
-				newOptions.headers["Authorization"] = defaultOptions.authorization;
+				newOptions.headers.Authorization = defaultOptions.authorization;
 			}
 		}
 
-		$http(newOptions).then(
+		return $http(newOptions).then(
 			function successCallback(response) {
 				if(utilities.isObject(response.data) && utilities.isObject(response.data.error)) {
 					return callback(utilities.createError(response.data.error, response.status), response.data, response);
@@ -250,7 +250,7 @@ angular.module("envelope")
 				data,
 				function(value, attribute) {
 					if(attribute === "file") {
-						continue;
+						return;
 					}
 
 					fileDescriptor.append(attribute, data[attribute]);
