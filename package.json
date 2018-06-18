@@ -1,6 +1,6 @@
 {
   "name": "angular-envelope",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A wrapper for the AngularJS $http service to allow for simpler RESTful API transactions.",
   "main": "dist/envelope.js",
   "scripts": {
