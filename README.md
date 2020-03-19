@@ -6,6 +6,8 @@
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![Downloads][npm-downloads-image]][npm-url]
 
+**This module has been deprecated, use [xhr-envelope][xhr-envelope-url] instead.**
+
 A wrapper for the AngularJS $http service to allow for simpler RESTful API transactions.
 
 ## Client-Side Usage
@@ -85,6 +87,8 @@ To install this module:
 ```bash
 npm install angular-envelope
 ```
+
+[xhr-envelope-url]: https://github.com/nitro404/xhr-envelope
 
 [npm-url]: https://www.npmjs.com/package/angular-envelope
 [npm-version-image]: https://img.shields.io/npm/v/angular-envelope.svg
